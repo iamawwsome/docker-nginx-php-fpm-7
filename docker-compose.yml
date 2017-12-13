@@ -1,0 +1,26 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: .docker/nginx/Dockerfile
+    ports:
+      - "80:80"
+    expose:
+      - "80"
+    stdin_open: true
+    tty: true
+    volumes:
+      - "./:/opt/app"
+    command: nginx
+  php-fpm:
+    build:
+      context: .
+      dockerfile: .docker/php-fpm/Dockerfile
+    expose:
+      - "9000"
+    volumes:
+      - "./:/opt/app"
+    stdin_open: true
+    tty: true
+    command: php-fpm
