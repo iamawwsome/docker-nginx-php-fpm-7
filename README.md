@@ -2,7 +2,7 @@
 
 This will build the neccessary services (nginx and php-fpm) to serve php files.
 
-The project directory will mounted to ```/opt/app```.
+The project directory will mount to ```/opt/app```.
 
 ```
 docker-compose -p php -f docker-compose.yml up
