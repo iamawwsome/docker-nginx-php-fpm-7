@@ -11,6 +11,9 @@ RUN yum install -y php-fpm php-xml php-cli php-bcmath php-dba php-gd php-intl ph
 
 RUN useradd -M -d /opt/app -s /bin/false nginx
 
+RUN mkdir -p /run/php-fpm && \
+    chown nginx:nginx /run/php-fpm
+
 COPY ./.docker/php-fpm/php-fpm.conf /etc/php-fpm.conf
 COPY ./.docker/php-fpm/www.conf /etc/php-fpm.d/www.conf
 COPY ./.docker/php-fpm/php.ini /etc/php.ini
