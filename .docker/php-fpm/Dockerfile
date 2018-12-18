@@ -14,6 +14,9 @@ RUN useradd -M -d /opt/app -s /bin/false nginx
 RUN mkdir -p /run/php-fpm && \
     chown nginx:nginx /run/php-fpm
 
+RUN mkdir -p /var/lib/php/session && \
+    chown nginx:nginx /var/lib/php/session
+
 COPY ./.docker/php-fpm/php-fpm.conf /etc/php-fpm.conf
 COPY ./.docker/php-fpm/www.conf /etc/php-fpm.d/www.conf
 COPY ./.docker/php-fpm/php.ini /etc/php.ini
